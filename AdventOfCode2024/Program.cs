@@ -1,7 +1,6 @@
 ﻿using AdventOfCode2024;
 using AdventOfCode2024.Utils;
 using System.Reflection;
-using System.Reflection.Metadata;
 
 string? userInput = null;
 if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SOLVE_CURRENT_DAY")))
