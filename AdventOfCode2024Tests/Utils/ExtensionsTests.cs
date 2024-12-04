@@ -48,5 +48,25 @@ namespace AdventOfCode2024.Tests.Utils
 
             Assert.That(ret, Is.EqualTo(new[] { "7", "5", "11", "2", "3", "10", "8", "9" }));
         }
+
+        [Test()]
+        public void GetColStringsTest()
+        {
+            var grid = "abc\r\ndef\r\nghi".AsGrid();
+
+            var ret = grid.GetColStrings();
+
+            Assert.That(ret, Is.EqualTo(new List<string>() { "adg", "beh", "cfi" }));
+        }
+
+        [Test()]
+        public void GetDiagStringsTest()
+        {
+            var grid = "abc\r\ndef\r\nghi".AsGrid();
+
+            var ret = grid.GetDiagStrings();
+
+            Assert.That(ret, Is.EqualTo(new List<string>() { "a", "db", "gec", "hf", "i", "g", "dh", "aei", "bf", "c" }));
+        }
     }
 }

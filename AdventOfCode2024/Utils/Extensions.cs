@@ -102,6 +102,58 @@
             return sb.ToString();
         }
 
+        public static IEnumerable<string> GetColStrings(this char[,] grid)
+        {
+            for (var x = 0; x < grid.GetLength(0); x++)
+                yield return grid.ColToString(x);
+        }
+
+        public static IEnumerable<string> GetRowStrings(this char[,] grid)
+        {
+            for (var y = 0; y < grid.GetLength(1); y++)
+                yield return grid.RowToString(y);
+        }
+
+        public static IEnumerable<string> GetDiagStrings(this char[,] grid)
+        {
+            int rows = grid.GetLength(0);
+            int cols = grid.GetLength(1);
+
+            for (int start = 0; start < rows + cols - 1; start++)
+            {
+                List<char> diagonal = new List<char>();
+                for (int i = 0; i <= start; i++)
+                {
+                    int row = i;
+                    int col = start - i;
+
+                    if (row < rows && col < cols)
+                    {
+                        diagonal.Add(grid[row, col]);
+                    }
+                }
+                if (diagonal.Count > 0)
+                    yield return new string(diagonal.ToArray());
+            }
+
+            for (int start = 0; start < rows + cols - 1; start++)
+            {
+                List<char> diagonal = new List<char>();
+                for (int i = 0; i <= start; i++)
+                {
+                    int row = i;
+                    int col = cols - 1 - (start - i);
+
+                    if (row < rows && col >= 0)
+                    {
+                        diagonal.Add(grid[row, col]);
+                    }
+                }
+                if (diagonal.Count > 0)
+                    yield return new string(diagonal.ToArray());
+            }
+        }
+
         public static List<Coordinates> Offset(this List<Coordinates> path, Coordinates? delta = null)
         {
             List<Coordinates> result = [];

@@ -9,7 +9,7 @@ namespace AdventOfCode2024.Tests.Day03
         [Test()]
         public void Part1Test()
         {
-            Solver solver = new(File.ReadAllText($"Day03\\sample.txt"));
+            Solver solver = new(File.ReadAllText($"Day03\\sample1.txt"));
             var rsp = solver.Part1();
 
             Assert.That(rsp, Is.EqualTo("161"));
@@ -18,7 +18,7 @@ namespace AdventOfCode2024.Tests.Day03
         [Test()]
         public void Part2Test()
         {
-            Solver solver = new(File.ReadAllText($"Day03\\sample.txt"));
+            Solver solver = new(File.ReadAllText($"Day03\\sample2.txt"));
             var rsp = solver.Part2();
 
             Assert.That(rsp, Is.EqualTo("48"));
